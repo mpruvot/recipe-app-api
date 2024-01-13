@@ -1,0 +1,15 @@
+version: "3.12"
+
+services: 
+  app:
+    build:
+      context: . # Uses the current dir
+      args:
+        - DEV=true
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app # mapping the app dir from our project into /app of our container
+    command: > # cmd that is used to run the server
+      sh -c "python manage.py runserver 0.0.0.0:8000" 
+    
